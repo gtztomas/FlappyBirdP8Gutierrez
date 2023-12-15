@@ -9,11 +9,16 @@ public class GameControl : MonoBehaviour
     public static GameControl instance;
     public GameObject gameOverText;
     public TextMeshProUGUI scoreText;
-   
+    public AudioClip ScoreSound;
     public bool gameOver = false;
     public float scrollSpeed = -1.5f;
+    public AudioClip ScoreSound;
    
     private int score = 0;
+
+    AudioSource audioSource;
+    
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +28,8 @@ public class GameControl : MonoBehaviour
         else if (instance != this) 
         {
             Destroy(gameObject);
+
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -49,4 +56,8 @@ public class GameControl : MonoBehaviour
         gameOver = true;
     }
 
+    public void PlaySound(AudioClip clip)
+    {
+        AudioSource.(clip);
+    }
 }
